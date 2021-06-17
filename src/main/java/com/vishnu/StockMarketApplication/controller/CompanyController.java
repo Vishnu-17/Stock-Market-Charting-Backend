@@ -22,7 +22,7 @@ import com.vishnu.StockMarketApplication.service.CompanyService;
 
 @RestController
 @RequestMapping("/company")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class CompanyController {
 
 	@Autowired
