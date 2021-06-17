@@ -43,9 +43,9 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public CompanyDto getCompanyById(String id) {
 		Optional<Company> company = companyRepository.findById(id);
-		if(company.isEmpty()) {
-			return null;
-		}
+	//	if(company.isEmpty()) {
+	//		return null;
+	//	}
 		return companyMapper.toCompanyDto(company.get());
 	}
 
@@ -79,9 +79,9 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public List<IpoDto> getCompanyIpoDetails(String id) {
 		Optional<Company> company = companyRepository.findById(id);
-		if(!company.isPresent()) {
-			return null;
-		}
+	//	if(!company.isPresent()) {
+	//		return null;
+	//	}
 		List<Ipo> ipos = company.get().getIpos();
 		return ipoMapper.toIpoDtos(ipos);
 	}
@@ -100,9 +100,9 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public List<StockPriceDto> getStockPrices(String id) {
 		Optional<Company> company = companyRepository.findById(id);
-		if(!company.isPresent()) {
-			return null;
-		}
+	//	if(!company.isPresent()) {
+	//		return null;
+	//	}
 		List<StockPrice> stockPrices = company.get().getStockPrices();
 		return stockPriceMapper.toStockPriceDtos(stockPrices);
 	}
