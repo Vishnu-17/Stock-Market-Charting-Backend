@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vishnu.StockMarketApplication.dto.IpoDto;
+import com.vishnu.StockMarketApplication.service.CompanyService;
 import com.vishnu.StockMarketApplication.service.IpoService;
 
 @RestController
@@ -24,6 +25,8 @@ public class IpoController {
 
 	@Autowired
 	private IpoService ipoService;
+	
+	private CompanyService companyService;
 	
 	@GetMapping("/ipos")
 	public ResponseEntity<List<IpoDto>> getAllIpos(){
@@ -37,7 +40,13 @@ public class IpoController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<IpoDto> addIpo(@RequestBody IpoDto ipoDto){
-		return ResponseEntity.ok(ipoService.addIpo(ipoDto));
+		IpoDto ipo = new IpoDto();
+		IpoDto ipo2 = new IpoDto();
+		ResponseEntity<IpoDto> result = ResponseEntity.ok(ipoService.addIpo(ipoDto));
+		ipo=result.getBody();
+		ipo2.setId(ipo.getId());
+		companyService.addIpoToCompany(ipoDto.getCompanyName(), ipo2);
+		return result;
 	}
 	
 	@PutMapping("/{id}")
