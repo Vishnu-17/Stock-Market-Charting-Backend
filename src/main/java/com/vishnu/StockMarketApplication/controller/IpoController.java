@@ -26,6 +26,7 @@ public class IpoController {
 	@Autowired
 	private IpoService ipoService;
 	
+	@Autowired
 	private CompanyService companyService;
 	
 	@GetMapping("/ipos")
