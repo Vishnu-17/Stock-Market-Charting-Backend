@@ -52,7 +52,7 @@ public class SectorController {
 	}
 	
 	@PostMapping("/{sectorName}/companies")
-	public void addCompanyToSector(@PathVariable String sectorName,CompanyDto companyDto) {
+	public void addCompanyToSector(@PathVariable String sectorName,@RequestBody CompanyDto companyDto) {
 		sectorService.addCompanyToSector(sectorName, companyDto);
 	}
 }
