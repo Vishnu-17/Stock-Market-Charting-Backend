@@ -60,7 +60,8 @@ public class SectorServiceImpl implements SectorService{
 
 	@Override
 	public SectorDto addCompanyToSector(String sectorName, CompanyDto companyDto) {
-		Sector sector = sectorRepository.findByName(sectorName);
+		List<Sector> sectors = sectorRepository.findByName(sectorName);
+		Sector sector = sectors.get(0);
 		sector.getCompanies().add(companyMapper.toCompany(companyDto));
 		sector = sectorRepository.save(sector);
 		return sectorMapper.toSectorDto(sector);

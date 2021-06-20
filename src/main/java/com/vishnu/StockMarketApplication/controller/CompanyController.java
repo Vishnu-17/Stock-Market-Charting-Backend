@@ -33,6 +33,16 @@ public class CompanyController {
 		return ResponseEntity.ok(companyService.getAllCompanies());
 	}
 	
+	@GetMapping("/name/{name}")
+	public ResponseEntity<List<CompanyDto>> getCompanyByName(@PathVariable String name){
+		return ResponseEntity.ok(companyService.getCompanyByName(name));
+	}
+	
+	@GetMapping("/code/{code}")
+	public ResponseEntity<List<CompanyDto>> getCompanyByCode(@PathVariable String code){
+		return ResponseEntity.ok(companyService.getCompanyByCode(code));
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<CompanyDto> getCompanyById(@PathVariable String id){
 		return ResponseEntity.ok(companyService.getCompanyById(id));

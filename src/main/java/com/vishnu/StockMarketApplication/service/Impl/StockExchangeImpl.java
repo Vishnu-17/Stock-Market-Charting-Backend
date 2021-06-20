@@ -72,7 +72,8 @@ public class StockExchangeImpl implements StockExchangeService{
 
 	@Override
 	public StockExchangeDto addCompanyToStockExchange(String stockExchangeName, CompanyDto companyDto) {
-		StockExchange stockExchange = stockExchangeRepository.findByName(stockExchangeName);
+		List<StockExchange> stockExchanges = stockExchangeRepository.findByName(stockExchangeName);
+		StockExchange stockExchange = stockExchanges.get(0);
 		if(stockExchange == null) {
 			return null;
 		}

@@ -46,7 +46,7 @@ public class IpoController {
 		ResponseEntity<IpoDto> result = ResponseEntity.ok(ipoService.addIpo(ipoDto));
 		ipo=result.getBody();
 		ipo2.setId(ipo.getId());
-		companyService.addIpoToCompany(ipoDto.getCompanyName(), ipo2);
+		//companyService.addIpoToCompany(ipoDto.getCompanyName(), ipo2);
 		return result;
 	}
 	
